@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package
+        run: pip install -e ".[test]"
+      - name: Run tests
+        run: python -m pytest tests/ -q
+      - name: Schema check
+        run: |
+          python -c "
+          import protgenesis_ensemble as pe
+          assert pe.__version__
+          for name in pe.__all__:
+              assert hasattr(pe, name), name
+          print('API schema OK:', len(pe.__all__), 'symbols')
+          "

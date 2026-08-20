@@ -1,0 +1,15 @@
+# BioEmu conformational-ensemble sampling environment (GPU required).
+# NOTE: BioEmu model weights are downloaded separately (see AI_CODER.md).
+name: bioemu
+channels:
+  - conda-forge
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch
+  - pytorch-cuda>=12.1
+  - openmm
+  - pip:
+      - bioemu

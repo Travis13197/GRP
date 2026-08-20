@@ -1,0 +1,13 @@
+# Protein language-model embeddings (ProstT5, ProtT5, ESM-C); GPU optional.
+name: grp-plm
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.10
+  - pip
+  - pytorch
+  - pip:
+      - transformers>=4.40
+      - torch>=2.0
+      - sentencepiece
