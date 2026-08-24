@@ -12,6 +12,8 @@ This is the codebase for the BioRxiv manuscript **"An Effective Geometric Field 
 
 **Core claim (in one paragraph).** Proteins are described not as single structures but as *ensembles* (probability measures) over conformational or learned-representation states. After rigid-body alignment, an ensemble's **intrinsic covariance** defines a local effective geometry; a **Ledoit-Wolf-regularized Mahalanobis metric** turns a perturbation into a covariance-normalized cost `C_geo`; biological source variables predict geometry observables through a local response operator; and ordered state paths are compared through distributional (Gaussian Bures-Wasserstein) transport.
 
+**The idea, in brief.** The underlying move is *from objects to distributions, from static configurations to organized possibilities, from points to paths.* Sequence, structure, ensemble and trajectory are four views of one state space. AI representations are treated as a **lossy mirror**, not a substitute for reality: biological constraints leave statistical traces in them, and those traces can be read back as testable hypotheses. The GR analogy is **methodological, not literal** — it asks what survives changes of coordinates, model, scale and representation. Keep this framing in mind when writing code or summaries: the goal is a *representation-aware language*, not a theory of physical forces.
+
 **Vocabulary you must use consistently** (matches the final manuscript, not earlier drafts):
 
 | Term | Meaning | Do NOT say |
@@ -158,7 +160,7 @@ Pipeline: BioEmu NPZ -> Kabsch align -> Ledoit-Wolf covariance -> spectral summa
 - `analysis/r1_ensemble_geometry/phase_m2_longchain_efficient.py` — randomized low-rank eigh for long chains.
 - `analysis/r1_ensemble_geometry/phase_l4_convergence_analysis.py` — sampling-convergence checks.
 
-Committed result: `database/geometry_db_v0.2.0.json` (participation ratio, spectral decay, anisotropy across the 1,323 systems).
+Committed result: `database/geometry_db_v0.2.0.json` (spectral summaries across the system atlas).
 
 ### Result 2 — covariance-normalized perturbation cost
 
@@ -170,7 +172,7 @@ Pipeline: WT ensemble metric `G_S` -> displacement `dz` -> `C_geo` -> associatio
 - `analysis/r2_perturbation_cost/phase_ensemble_b1_fullatom_cgeo.py` — Cα vs full-atom correspondence.
 - `analysis/r2_perturbation_cost/phase_o4_analyze.py` — real-mutant ensemble validation.
 
-Committed inputs: `data/dms/*.tsv`. Committed result: mean `rho = -0.1475` across 8 proteins / 84,361 mutations; cross-resolution `r = 0.219` (n = 376).
+Committed inputs: `data/dms/*.tsv`. Committed result: the C_geo–DMS association and cross-resolution correspondence.
 
 ### Result 3 — effective geometric field
 
@@ -182,7 +184,7 @@ Pipeline: non-redundant source descriptors -> grouped held-out prediction -> res
 - `analysis/r3_source_field/phase_k5_nested_cv_field.py` — grouped nested cross-validation.
 - `analysis/r3_source_field/phase_m6_ensemble_gnn.py` — graph-model non-recovery control.
 
-Committed result: 73.6% of responses `R2 > 0.1`; bootstrap ARI 0.708; leave-one-out ARI 1.0; graph model `R2 = -0.1553`.
+Committed result: the grouped held-out prediction and the reproducible response-coupling structure.
 
 ### Result 4 — low-transport paths
 
@@ -194,7 +196,7 @@ Pipeline: ordered state path -> common-space map (joint PCA) -> Gaussian Bures-W
 - `analysis/r4_path_transport/phase_d3_path_analysis.py` — natural-path analysis.
 - `analysis/r4_path_transport/phase_f4_cross_system_w2.py` — cross-system transport.
 
-Committed result: primary 11.75 vs 22.90 (d = -1.54, P = 8.4e-68); heteropolymer 3.07 vs 3.46; NPZ 7.62 vs 9.29.
+Committed result: the low-transport comparison across the primary and replication analyses.
 
 ### Result 5 — unified organization (synthesis + cross-representation)
 

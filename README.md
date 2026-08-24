@@ -9,52 +9,58 @@
 
 ---
 
-## Overview
+## The idea
 
-Proteins do not function as single static structures, but through coupled changes across sequence, structure, conformational ensembles and trajectories. These four levels are usually studied separately. **GRP** takes their *coupled state space* as primary:
+Proteins are usually studied as a sequence of static objects. GRP starts from a different premise: **what matters is not the object, but the space of possibilities around it.**
 
-| Layer | Role in GRP |
-|-------|-------------|
-| Sequence | indexes and constrains the space |
-| Structure | a state within it |
-| Ensemble | a probability measure over accessible states |
-| Trajectory | a path through those states |
+Four levels that are usually treated separately — sequence, structure, ensemble, trajectory — are really four views of one thing:
 
-The conceptual shift is **from objects to distributions, from static configurations to organized possibilities, and from a science of points to a science of paths.** AI-based molecular representations (BioEmu for conformations; ProstT5, ProtT5 and ESM-C for learned embeddings) transform discrete biological observations into computational objects whose covariance structure, effective metrics and path geometry can be quantified.
+| Level | What it is |
+|-------|------------|
+| Sequence | constrains *which* states can exist |
+| Structure | *one point* in that space |
+| Ensemble | the *distribution* over accessible states |
+| Trajectory | a *path* through those states |
 
-GRP adopts a **methodological rather than literal** analogy with general relativity: it asks what remains valid when coordinates, models, scales or representations change, and how such structures can be described mathematically. It does **not** identify learned protein geometry with physical spacetime, inverse covariance with a molecular force-constant matrix, geometric cost with free energy, or transport length with a physical action.
+The conceptual shift is therefore **from objects to distributions, from static configurations to organized possibilities, from a science of points to a science of paths.** A distribution has shape — spread, orientation, soft and stiff directions — and the working hypothesis is that biological constraints leave a *measurable, law-like* trace in that shape.
 
-The framework is described in the BioRxiv manuscript:
+## The mirror-world hypothesis
+
+AI representations (BioEmu conformations; ProstT5, ProtT5, ESM-C embeddings) are **not** the biological world — they are a *mirror* of it. Biological constraints imprint statistical traces in learned representations, and the mathematics of those traces can be read back as hypotheses about the original system.
+
+This correspondence is deliberately **lossy, task-dependent and scale-limited**: it is not an identity between representation and reality. AI here is a scientific instrument that makes otherwise-invisible collective structure measurable. Its value is not to predict a fixed endpoint, but to *expose candidate variables and relations* that can later be translated into physical quantities and tested.
+
+## The method — a methodological, not literal, analogy
+
+General relativity shifted attention from coordinates to the relations that remain meaningful under coordinate change. GRP asks the same question for protein space: **what remains valid when coordinates, model, scale, or representation change?**
+
+The machinery is deliberately simple, so every step can be named and questioned:
+
+| Construction | Question it answers |
+|--------------|---------------------|
+| ensemble → geometry | How is a distribution organized (participation ratio, spectral decay, anisotropy)? |
+| ensemble → metric | Which directions are soft vs. stiff (regularized inverse covariance G_S)? |
+| perturbation → cost | How surprising is a displacement, given the background (C_geo = δzᵀ G_S δz)? |
+| source → geometry | Can biological descriptors predict that organization (a local response operator)? |
+| path → transport | How far apart are successive ensembles along an ordered path (Wasserstein)? |
+
+Each arrow is a *construction*, not a law. Each is written in a declared representation and tested against matched nulls.
+
+## What it shows
+
+Across roughly 1,300 ensembles and 8 proteins / 84k mutations, the picture is coherent: aligned conformational covariance is reproducibly organized by chain length; a mutation is more comparable once normalized by the local background covariance; biological descriptors predict geometry; and ordered paths move through state space more coherently than matched shuffles. None of these is claimed as a physical law — each is a representation-dependent, statistically tested relation. Full numerical detail lives in [`docs/figure_legends.md`](docs/figure_legends.md) and the per-figure notes.
+
+## What this is — and is not (a condensed discussion)
+
+This is a *language*, not a theory of forces: a bold but preliminary attempt to mathematize biology at the level of distributions rather than points.
+
+It deliberately does **not** claim that learned geometry is physical spacetime, that inverse covariance is a molecular force-constant matrix, that C_geo is free energy, that transport is a physical action, or that any relation is coordinate-free or causal.
+
+What it tries to offer is a representation-aware vocabulary connecting sequence variation, ensemble heterogeneity, mutational response and ordered paths — one whose value lies in generating testable hypotheses rather than assigning literal physical meaning. Whether these relations transfer to biological measurement is an open, empirical question. The mirror is lossy on purpose: the goal is not to replace reality with representation, but to make the *structure that persists across representations* visible and mathematically tractable.
+
+The full argument is in the BioRxiv manuscript:
 
 > **Liu, C.** *An Effective Geometric Field Theory of Protein Space.* bioRxiv (2026). ([`docs/paper_GRP2.0.pdf`](docs/paper_GRP2.0.pdf))
-
----
-
-## The five results
-
-### 1. Protein states define local effective geometry across protein space
-
-Conformational ensembles (1,323 quality-controlled sequence-defined systems: PolyX 750, heteropolymer 239, hydrophobic-gradient 188, linker 94, intrinsically disordered 44, DMS-associated 8) are summarized by their **intrinsic covariance** after rigid-body (Kabsch) alignment. Normalized spectral summaries — participation ratio, anisotropy, spectral decay — reveal reproducible chain-length scaling (participation-ratio pooled log-log Pearson *r* = 0.78, *P* = 7.5×10⁻⁴³, *n* = 208; spectral-decay *β* = −0.66, *R²* = 0.95). These descriptors are statistical summaries of the declared representation, not intrinsic manifold dimensions.
-
-### 2. Covariance-normalized perturbation geometry captures mutational constraint
-
-The regularized local metric **G_S = Ĉ_S,LW⁻¹** (Ledoit–Wolf optimal shrinkage) defines a Mahalanobis-type perturbation cost
-
-**C_geo(𝒫|S) = δzᵀ G_S δz**
-
-that down-weights high-variance background directions. C_geo is interpreted as a **statistical atypicality measure** — not a force, elastic energy, mutation free energy or Hessian cost. Across eight proteins and 84,361 mutations it shows a modest negative association with experimental fitness (mean Spearman *ρ* = −0.1475), and matched Cα/full-atom costs correspond weakly (*r* = 0.219, *n* = 376). Directional-consistency and coefficient-of-variation statistics are retained as *transformation diagnostics*, not independent biological validation.
-
-### 3. Biological constraints define a predictive effective-geometric field
-
-Non-redundant biological source variables (chain length, composition contrasts, physicochemical descriptors, contextual variables) predict ensemble-geometry observables through a local response operator **K_r(t₀)**. 73.6% of per-amino-acid responses reached *R²* > 0.1; the estimated response-coupling matrix is reproducibly organized (bootstrap adjusted Rand index 0.708; 18 leave-one-amino-acid-out analyses ARI = 1.0). The result supports a **partially transferable, representation-dependent** response field — not a coordinate-free causal law.
-
-### 4. Structured protein-state paths show reduced mean Gaussian transport
-
-Ordered state paths (chain-length progressions, mutation sequences, generated candidates) are mapped into a common comparison space and summarized by the mean adjacent-state Gaussian transport W̅₂,G. Structured paths show lower transport than matched null paths (primary: 11.75 vs 22.90, Cohen's *d* = −1.54, *P* = 8.4×10⁻⁶⁸; heteropolymer 3.07 vs 3.46; direct-NPZ 7.62 vs 9.29). This establishes a **low-transport path relation**, not a complete minimum-action principle.
-
-### 5. Unified effective-geometric organization
-
-The five analyses define distinct but connected mathematical constructions — ensemble → geometry, ensemble → metric, (ensemble, perturbation) → cost, source ⇢ geometry, path → transport. Together they form a multiscale effective statistical framework; the mappings do **not** constitute a deterministic causal chain.
 
 ---
 
