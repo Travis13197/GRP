@@ -22,10 +22,12 @@ env/
 data/bioemu/
 data/full_atom/
 data/embeddings/
-*.npz
 *.xtc
 *.dcd
 *.trr
+# NOTE: committed figure inputs under figures/data/ (spectra *.npz and the four
+# small BioEmu Cα ensembles) are intentionally tracked; the large ~4.4 GB
+# conformational atlas is excluded by simply not being present in this repo.
 
 # OS / editor
 .DS_Store

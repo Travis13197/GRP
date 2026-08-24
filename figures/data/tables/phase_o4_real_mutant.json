@@ -1,0 +1,49 @@
+{
+  "n_variants": 36,
+  "n_ok": 36,
+  "runtime_sec": 6.599393367767334,
+  "T1_direction": {
+    "median_ratio": 0.9632037231077895,
+    "wilcoxon_p": 1.9859595340676606e-05,
+    "PASS": true
+  },
+  "T2_spectrum": {
+    "median_soft_third": 0.9811152867440482,
+    "expected_random": 0.3333333333333333,
+    "wilcoxon_p": 1.4551915228366852e-11,
+    "PASS": true,
+    "definition": "softest third = largest 1/3 eigenvalues (eigh ascending proj[-k3:])",
+    "fix_note": "2026-08-12: mode selection fixed (was proj[:k3] = stiffest third, inverted)"
+  },
+  "T3_correlation": {
+    "rho_cgeo_real": -0.03088803088803089,
+    "p_real": 0.8580710885452417,
+    "rho_cgeo_v3": -0.12175032175032177,
+    "p_v3": 0.47934313234471915
+  },
+  "verdict_PASS": true,
+  "cluster_robust": {
+    "n_proteins": 3,
+    "protein_level_median_ratio": {
+      "HRAS": 0.9909970802984054,
+      "P53": 0.9457319995744974,
+      "PTEN": 0.9723141019137121
+    },
+    "protein_level_median_soft_third": {
+      "HRAS": 0.9821849135405746,
+      "P53": 0.9868211554627154,
+      "PTEN": 0.9788909217314559
+    },
+    "protein_level_ratio_all_below_1": true,
+    "protein_level_soft_all_above_third": true,
+    "cluster_boot_ratio_ci95": [
+      0.9457319995744974,
+      0.9909970802984054
+    ],
+    "cluster_boot_soft_ci95": [
+      0.9788909217314559,
+      0.9868211554627154
+    ],
+    "note": "蛋白块 bootstrap (n=3 蛋白) — T1 蛋白级中位数 3/3<1 (sign-consistent, 蛋白级强支持), T2 蛋白级 3/3 远超 1/3 期望 (效应量巨大); 终审 36/36 变体 (每蛋白 12) 完成"
+  }
+}

@@ -1,0 +1,28 @@
+name: figures
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-figures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install figure dependencies
+        run: |
+          pip install numpy scipy pandas scikit-learn matplotlib seaborn statsmodels umap-learn
+      - name: Regenerate main figures
+        run: python figures/scripts/make_figures.py main
+      - name: Regenerate supplementary figures
+        run: python figures/scripts/make_figures.py supp
+      - name: Upload figures
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuscript-figures
+          path: figures/out/

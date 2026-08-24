@@ -48,7 +48,11 @@ The manuscript is deliberately conservative: it reports empirical, representatio
 ├── database/                   # geometry_db_v0.2.0.json + .sha256 (1,904 records)
 ├── analysis/                   # manuscript scripts, organized by result
 ├── data/                       # committed inputs (DMS, sequences)
-├── figures/                    # final manuscript figures
+├── figures/                    # figure reproduction (scripts, inputs, per-figure docs)
+│   ├── scripts/                #   generators + driver (make_figures.py)
+│   ├── data/                   #   committed figure inputs (~20 MB)
+│   ├── out/                    #   generated outputs (main/, supplementary/)
+│   └── Figure1-4.md, Supplementary_Figures.md
 ├── config/                     # conda env specs
 └── docs/                       # paper PDF + figure legends
 ```
@@ -63,6 +67,7 @@ The manuscript is deliberately conservative: it reports empirical, representatio
 | BioEmu conformational NPZ | not committed | ~4.4 GB; regenerate with BioEmu (GPU) |
 | full-atom / side-chain XTC/PDB | not committed | regenerate with hpacker + OpenMM |
 | learned embeddings (ProstT5/ProtT5/ESM-C) | not committed | regenerate from model checkpoints |
+| figure inputs (`figures/data/`) | committed | 26 tables + 1,373-system atlas + 4 BioEmu Cα ensembles |
 
 **Never fabricate the non-committed data.** If a script requires missing ensembles, generate them first (Section 6), or report the blocker explicitly.
 
@@ -201,6 +206,21 @@ Committed result: primary 11.75 vs 22.90 (d = -1.54, P = 8.4e-68); heteropolymer
 ---
 
 ## 7. Reproduction recipes
+
+### 7.0 Figures (fully self-contained, CPU-only)
+
+All 13 figures (Figures 1–4 and S1–S9) regenerate from committed `figures/data/` inputs without BioEmu, PLMs, or GPU:
+
+```bash
+pip install numpy scipy pandas scikit-learn matplotlib seaborn statsmodels umap-learn
+python figures/scripts/make_figures.py          # main + supplementary
+python figures/scripts/make_figures.py main     # Figures 1-4 only
+python figures/scripts/make_figures.py supp     # Figures S1-S9 only
+```
+
+This writes `figures/out/main/` and `figures/out/supplementary/` in four formats (SVG/JPG/PNG/PDF). The same command is run by `.github/workflows/figures.yml`. Per-figure data provenance and panel documentation are in `figures/Figure1.md` … `figures/Figure4.md` and `figures/Supplementary_Figures.md`.
+
+The `figures/data/` tables are the canonical intermediate results from the analysis scripts below; if you change an analysis script, regenerate its table first, copy it into `figures/data/tables/`, then rerun the figure driver.
 
 ### 7.1 Fast path (CPU only, no BioEmu)
 

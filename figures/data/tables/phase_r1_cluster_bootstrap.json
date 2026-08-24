@@ -1,0 +1,51 @@
+{
+  "timestamp": "2026-07-18T12:43:49.657229",
+  "description": "R1 cluster bootstrap for pseudoreplication correction",
+  "method": "Cluster Block Bootstrap (AA family as cluster unit)",
+  "n_clusters": 10,
+  "clusters": [
+    "A",
+    "E",
+    "F",
+    "G",
+    "I",
+    "K",
+    "L",
+    "S",
+    "V",
+    "unknown"
+  ],
+  "n_bio_paths": 673,
+  "n_null_paths": 263,
+  "n_bootstrap": 10000,
+  "original": {
+    "bio_mean": 11.753536513486948,
+    "null_mean": 22.90242076935736,
+    "mean_diff": -11.148884255870412,
+    "cohens_d": -1.5453620683494482,
+    "mannwhitney_p": 8.39641843294582e-68,
+    "note": "Unclustered — inflated significance due to pseudoreplication"
+  },
+  "cluster_bootstrap": {
+    "p_median": 1.3633971520239797e-66,
+    "p_mean": 4.0563443799165005e-45,
+    "p_ci95_low": 1.0980399082635434e-77,
+    "p_ci95_high": 2.107007007292149e-53,
+    "p_fraction_significant_005": 1.0,
+    "p_fraction_significant_001": 1.0,
+    "diff_median": -11.314828641862569,
+    "diff_ci95_low": -13.208446813691488,
+    "diff_ci95_high": -9.700406923608089,
+    "cohens_d_median": -1.5780416681821192,
+    "cohens_d_ci95_low": -1.8398410408229182,
+    "cohens_d_ci95_high": -1.3852104453172143
+  },
+  "interpretation": {
+    "original_p": "p = 8.40e-68 (unclustered, likely inflated)",
+    "bootstrap_p_median": "p = 1.36e-66 (cluster bootstrap median)",
+    "bootstrap_p_ci95": "95% CI: [1.10e-77, 2.11e-53]",
+    "significance_robust": true,
+    "n_eff_note": "n_eff = 10 AA families (vs nominal n = 673 bio paths)",
+    "conclusion": "Law 3 R1 result is robust to pseudoreplication"
+  }
+}

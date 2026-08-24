@@ -160,7 +160,12 @@ The repository ships the **minimal inputs** required to reproduce the manuscript
 
 ## Figures
 
-Final manuscript figures are provided in `figures/` (PDF, PNG and SVG):
+Final manuscript figures are provided in `figures/out/` (PDF, PNG, SVG and JPG) and are **fully reproducible from committed inputs** via the bundled workflow:
+
+```bash
+pip install numpy scipy pandas scikit-learn matplotlib seaborn statsmodels umap-learn
+python figures/scripts/make_figures.py          # regenerate Figures 1-4 + S1-S9
+```
 
 | Figure | Content |
 |--------|---------|
@@ -170,7 +175,11 @@ Final manuscript figures are provided in `figures/` (PDF, PNG and SVG):
 | Fig. 4 | Structured protein-state paths show reduced mean Gaussian transport |
 | Figs. S1–S9 | Per-amino-acid spectra, DMS per protein, fingerprints, field/path support, UMAP/t-SNE atlas |
 
-Figure legends are in [`docs/figure_legends.md`](docs/figure_legends.md).
+Each figure has a dedicated, fully annotated document:
+
+- [Figure 1](figures/Figure1.md) · [Figure 2](figures/Figure2.md) · [Figure 3](figures/Figure3.md) · [Figure 4](figures/Figure4.md) · [Supplementary figures](figures/Supplementary_Figures.md)
+
+The reproduction workflow is defined in [`.github/workflows/figures.yml`](.github/workflows/figures.yml); figure inputs and provenance are described in [`figures/README.md`](figures/README.md), and panel-by-panel legends are in [`docs/figure_legends.md`](docs/figure_legends.md).
 
 ---
 

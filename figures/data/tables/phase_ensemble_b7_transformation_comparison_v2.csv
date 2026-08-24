@@ -1,0 +1,6 @@
+transformation,frob_norm,condition_number,median_R2,n_significant,rank,frob_diff_vs_theoretical
+Original,7.282041743642211,,,17,19,0.0
+Orthogonal (Rotation),7.28204174364223,,,17,19,2.2279543364891729e-13
+Scaling,13.949295712871988,,,17,19,0.2782028707794549
+Affine,7.247887434032098,,0.40609555203760095,20,19,1.957989907499257e-13
+Whitening,0.0,,,0,0,

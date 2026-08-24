@@ -1,0 +1,239 @@
+{
+  "generated_at": "2026-07-19T14:02:34.256436",
+  "data_completeness": {
+    "n_geometry": 320,
+    "n_design": 320,
+    "fraction": 1.0
+  },
+  "preliminary": false,
+  "preregistration": "Article_Preparation/Law2_Independent_Validation_Plan.md v1.2 §6",
+  "alpha": 50.0,
+  "n_perm": 2000,
+  "n_boot": 1000,
+  "criteria": {
+    "V1": {
+      "threshold": "perm p < 0.01 (2000) AND Cohen's d > 0.5",
+      "panel_A": {
+        "status": "FAIL",
+        "within_mean": 0.05852438267766112,
+        "between_mean": -0.02220839576130591,
+        "diff": 0.08073277843896703,
+        "cohens_d": 0.1259393470832832,
+        "perm_p": 0.299,
+        "n_perm": 2000,
+        "n_within": 30,
+        "n_between": 60,
+        "per_aa": {
+          "K": {
+            "n_cells": 5,
+            "within_mean": 0.27072053587653283,
+            "between_mean": -0.06614496575033375,
+            "diff": 0.33686550162686657
+          },
+          "R": {
+            "n_cells": 5,
+            "within_mean": 0.07056862236800698,
+            "between_mean": 0.23528318744950774,
+            "diff": -0.16471456508150076
+          },
+          "H": {
+            "n_cells": 5,
+            "within_mean": -0.07066420095942644,
+            "between_mean": -0.09996331244895061,
+            "diff": 0.029299111489524174
+          },
+          "D": {
+            "n_cells": 5,
+            "within_mean": -0.07068569305443062,
+            "between_mean": 0.035361078581244466,
+            "diff": -0.10604677163567508
+          },
+          "L": {
+            "n_cells": 5,
+            "within_mean": 0.47559280656558023,
+            "between_mean": -0.16889795490351023,
+            "diff": 0.6444907614690905
+          },
+          "G": {
+            "n_cells": 5,
+            "within_mean": -0.3243857747302962,
+            "between_mean": -0.06888840749579303,
+            "diff": -0.2554973672345031
+          }
+        }
+      },
+      "panel_C": {
+        "status": "FAIL",
+        "within_mean": 0.08339908049322542,
+        "between_mean": 0.08400421781777863,
+        "diff": -0.0006051373245532093,
+        "cohens_d": -0.0007767683318368639,
+        "perm_p": 0.4585,
+        "n_perm": 2000,
+        "n_within": 24,
+        "n_between": 12,
+        "per_aa": {
+          "K": {
+            "n_cells": 4,
+            "within_mean": 0.07999578931939384,
+            "between_mean": -0.12420526883956923,
+            "diff": 0.20420105815896306
+          },
+          "L": {
+            "n_cells": 4,
+            "within_mean": 0.08680237166705702,
+            "between_mean": 0.29221370447512646,
+            "diff": -0.20541133280806945
+          }
+        }
+      },
+      "status": "FAIL",
+      "primary": "panel_A"
+    },
+    "V2": {
+      "threshold": "strict CV R² > 0.3 (leave-one-AA-out; 单AA基线 -0.431)",
+      "status": "FAIL",
+      "n_pairs": 60,
+      "n_features_used": 14,
+      "dropped_na_features": [
+        "kappa"
+      ],
+      "cv_r2_ridge": -0.14668928754841604,
+      "cv_r2_gbrt": -0.7179485567355626,
+      "y_mean": 0.12045938170703475,
+      "y_std": 0.8550443783140689,
+      "aas": [
+        "D",
+        "G",
+        "H",
+        "K",
+        "L",
+        "R"
+      ]
+    },
+    "V3": {
+      "threshold": "bootstrap mean ARI > 0.7 (1000次)",
+      "status": "PASS",
+      "n_strata": 86,
+      "best_k": 2,
+      "silhouette": 0.9495225973831475,
+      "sil_scores_by_k": {
+        "2": 0.9495225973831475,
+        "3": 0.9479862605827629,
+        "4": 0.9471613337191764,
+        "5": 0.9423573295043702,
+        "6": 0.9385509263833729,
+        "7": 0.9290778875414931
+      },
+      "boot_mean_ari": 0.7084654791761159,
+      "boot_median_ari": 0.6964571562788014,
+      "boot_frac_ari_gt_0.7": 0.476,
+      "n_boot_valid": 1000,
+      "loao_ari": {
+        "AG": 1.0,
+        "D": 1.0,
+        "DE": 1.0,
+        "FG": 1.0,
+        "G": 1.0,
+        "H": 1.0,
+        "HE": 1.0,
+        "K": 1.0,
+        "KD": 1.0,
+        "KE": 1.0,
+        "KR": 1.0,
+        "L": 1.0,
+        "LS": 1.0,
+        "R": 1.0,
+        "RE": 1.0,
+        "VI": 1.0,
+        "WG": 1.0,
+        "YG": 1.0
+      },
+      "loao_mean_ari": 1.0,
+      "geo_subspace": "GEO5"
+    },
+    "V4": {
+      "threshold": "ΔR² > 0.1 (context vs single-AA) AND perm p < 0.01 (2000)",
+      "status": "FAIL",
+      "n_train": 264,
+      "n_test": 56,
+      "r2_singleAA": {
+        "PR": -0.5068126408714462,
+        "entropy": -0.019867826181253045,
+        "spectral_decay": -2.211919499789957,
+        "eff_rank_95": 0.0,
+        "total_variance": 0.011422784901175764
+      },
+      "r2_context": {
+        "PR": -4.035266279680501,
+        "entropy": -8.42306236095116,
+        "spectral_decay": -2.258105925139375,
+        "eff_rank_95": 0.0,
+        "total_variance": -0.004263056388992492
+      },
+      "delta_r2_per_target": {
+        "PR": -3.528453638809055,
+        "entropy": -8.403194534769908,
+        "spectral_decay": -0.04618642534941797,
+        "eff_rank_95": 0.0,
+        "total_variance": -0.015685841290168256
+      },
+      "delta_r2_mean": -2.3987040880437096,
+      "perm_p": 0.9735,
+      "n_perm": 2000,
+      "perm_mean": -0.5844264207064164,
+      "perm_std": 0.7615267137180785
+    },
+    "V5": {
+      "threshold": "6焦点AA {K,R,H,D,L,G} 平均 cos-sim > 0.8 (vs 主数据集 per-AA K, GEO5 子空间)",
+      "status": "FAIL",
+      "cos_sim_per_anchor": {
+        "K_A1": -0.9996665294685787,
+        "R_A1": -0.9990293043700853,
+        "H_A1": 0.8720364326111179,
+        "D_A1": 0.9986230865821364,
+        "L_A1": -0.9999976153102883,
+        "G_A1": 0.9999831584747454,
+        "K_C1": 0.9999998151226295,
+        "L_C1": 0.9999972624575008
+      },
+      "mean_cos_sim": 0.2339932882623972,
+      "main_aas_available": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "K",
+        "L",
+        "M",
+        "N",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "V",
+        "W",
+        "Y"
+      ],
+      "note": "主数据集与新数据使用同一估计器 (Ridge α=50, GEO5), 比较纯数据一致性"
+    }
+  },
+  "summary": {
+    "statuses": {
+      "V1": "FAIL",
+      "V2": "FAIL",
+      "V3": "PASS",
+      "V4": "FAIL",
+      "V5": "FAIL"
+    },
+    "n_pass": 1,
+    "n_fail": 4,
+    "n_skipped": 0,
+    "verdict": "H1 证伪 (1/5) — 支持 H0 (耦合不可还原性为涌现性质)"
+  }
+}

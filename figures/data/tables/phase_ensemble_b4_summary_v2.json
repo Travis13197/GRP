@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-07-04 22:45:32",
+  "n_heteropolymer_seqs": 239,
+  "n_bio_paths": 534,
+  "n_null_paths": 500,
+  "mean_A_bio": 3.169735472860849,
+  "mean_A_null": 3.5684412690266756,
+  "std_A_bio": 1.9302578149729168,
+  "std_A_null": 1.969928174858105,
+  "mannwhitney_p": 1.190713408967523e-06,
+  "ttest_p": 0.0005304370444187299,
+  "cohens_d": -0.20444418405922826,
+  "z_score": -0.20239610724415605,
+  "law3_supported": true,
+  "w2_bio_mean": 3.0721145057832113,
+  "w2_null_mean": 3.4579579005119014,
+  "w2_p_value": 2.3055716584770247e-06,
+  "categories_analyzed": [
+    "HET_ALT",
+    "HET_BLOCK",
+    "HET_KAPPA",
+    "HET_IDP",
+    "HET_BLOCK_to_HET_ALT",
+    "HET_COMP",
+    "HET_ALT_to_HET_COMP",
+    "HET_BLOCK_to_HET_COMP"
+  ]
+}
