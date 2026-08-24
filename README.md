@@ -2,7 +2,7 @@
 
 **GRP — General Relativity of Protein.** A representation-aware statistical framework that treats sequence, structure, conformational ensemble and trajectory as connected layers of one protein state space.
 
-> *"Biological constraints tell protein space how to curve, and curved space geometry tells proteins how to change."*
+> *"Biological constraints tell protein space how to curve, and curved space geometry tells proteins how to change"*
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -50,15 +50,14 @@ Each arrow is a *construction*, not a law. Each is written in a declared represe
 
 Across roughly 1,300 ensembles and 8 proteins / 84k mutations, the picture is coherent: aligned conformational covariance is reproducibly organized by chain length; a mutation is more comparable once normalized by the local background covariance; biological descriptors predict geometry; and ordered paths move through state space more coherently than matched shuffles. None of these is claimed as a physical law — each is a representation-dependent, statistically tested relation. Full numerical detail lives in [`docs/figure_legends.md`](docs/figure_legends.md) and the per-figure notes.
 
-## What this is — and is not (a condensed discussion)
-
+## What this is — and is not
 This is a *language*, not a theory of forces: a bold but preliminary attempt to mathematize biology at the level of distributions rather than points.
 
 It deliberately does **not** claim that learned geometry is physical spacetime, that inverse covariance is a molecular force-constant matrix, that C_geo is free energy, that transport is a physical action, or that any relation is coordinate-free or causal.
 
 What it tries to offer is a representation-aware vocabulary connecting sequence variation, ensemble heterogeneity, mutational response and ordered paths — one whose value lies in generating testable hypotheses rather than assigning literal physical meaning. Whether these relations transfer to biological measurement is an open, empirical question. The mirror is lossy on purpose: the goal is not to replace reality with representation, but to make the *structure that persists across representations* visible and mathematically tractable.
 
-The full argument is in the BioRxiv manuscript:
+The full argument is in the BioRxiv manuscript (Not Yet):
 
 > **Liu, C.** *An Effective Geometric Field Theory of Protein Space.* bioRxiv (2026). ([`docs/paper_GRP2.0.pdf`](docs/paper_GRP2.0.pdf))
 
@@ -194,6 +193,7 @@ The reproduction workflow is defined in [`.github/workflows/figures.yml`](.githu
 If you use this code or data, please cite:
 
 > Liu, C. **An Effective Geometric Field Theory of Protein Space.** bioRxiv (2026).
+> Liu, C. **Universal physical principles govern the deterministic genesis of protein structure.** bioRxiv. (2026). doi: https://doi.org/10.64898/2026.02.20.706798.
 
 ---
 
