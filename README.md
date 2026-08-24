@@ -193,6 +193,7 @@ The reproduction workflow is defined in [`.github/workflows/figures.yml`](.githu
 If you use this code or data, please cite:
 
 > Liu, C. **An Effective Geometric Field Theory of Protein Space.** bioRxiv (2026).
+
 > Liu, C. **Universal physical principles govern the deterministic genesis of protein structure.** bioRxiv. (2026). doi: https://doi.org/10.64898/2026.02.20.706798.
 
 ---
