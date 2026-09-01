@@ -10,6 +10,7 @@
 ---
 
 ## The idea
+![image](https://github.com/Travis13197/GRP/figures/'GRP GA.jpg')
 
 Proteins are usually studied as a sequence of static objects. GRP starts from a different premise: **what matters is not the object, but the space of possibilities around it.**
 
