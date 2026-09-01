@@ -59,7 +59,7 @@ What it tries to offer is a representation-aware vocabulary connecting sequence 
 
 The full argument is in the BioRxiv manuscript (Not Yet):
 
-> **Liu, C.** *An Effective Geometric Field Theory of Protein Space.* bioRxiv (2026). ([`docs/paper_GRP2.0.pdf`](docs/paper_GRP2.0.pdf))
+> **Liu, C.** GRP: A Representation-Aware Effective Geometry of Protein State Space** Research Square (2026).[https://doi.org/10.21203/rs.3.rs-10857002/v1]). ([`docs/paper_GRP2.0.pdf`](docs/paper_GRP2.0.pdf))
 
 ---
 
@@ -192,7 +192,7 @@ The reproduction workflow is defined in [`.github/workflows/figures.yml`](.githu
 
 If you use this code or data, please cite:
 
-> Liu, C. **An Effective Geometric Field Theory of Protein Space.** bioRxiv (2026).
+> Liu, C. **GRP: A Representation-Aware Effective Geometry of Protein State Space** Research Square (2026).[https://doi.org/10.21203/rs.3.rs-10857002/v1]
 
 > Liu, C. **Universal physical principles govern the deterministic genesis of protein structure.** bioRxiv. (2026). doi: https://doi.org/10.64898/2026.02.20.706798.
 
