@@ -1,6 +1,6 @@
 # An Effective Geometric Field Theory of Protein Space
 
-**GRP — General Relativity of Protein.** A representation-aware statistical framework that treats sequence, structure, conformational ensemble and trajectory as connected layers of one protein state space.
+**GRP — General Relativity of Protein.** A general relativity-inspired representation-aware statistical framework that treats sequence, structure, conformational ensemble and trajectory as connected layers of one protein state space.
 
 > *"Biological constraints tell protein state space how to curve, and curved space geometry tells proteins how to change"*
 
