@@ -2,7 +2,7 @@
 
 **GRP — General Relativity of Protein.** A representation-aware statistical framework that treats sequence, structure, conformational ensemble and trajectory as connected layers of one protein state space.
 
-> *"Biological constraints tell protein space how to curve, and curved space geometry tells proteins how to change"*
+> *"Biological constraints tell protein state space how to curve, and curved space geometry tells proteins how to change"*
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
